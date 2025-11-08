@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Únete a Nuestro Catálogo de Modelos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #1a1a1a;
+            --accent-color: #f8f9fa;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto;
+        }
+        
+        .form-section {
+            padding: 80px 0;
+            background-color: var(--accent-color);
+        }
+        
+        .form-control, .form-select {
+            border-radius: 0;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 0;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #b8941f;
+        }
+        
+        .features-section {
+            padding: 80px 0;
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 18px;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-upload-btn {
+            border: 1px dashed #ccc;
+            color: #666;
+            background-color: white;
+            padding: 12px 20px;
+            border-radius: 0;
+            font-size: 14px;
+            font-weight: 500;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .file-upload input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .alert {
+            border-radius: 0;
+            display: none;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: red;
+        }
+        
+        .spinner-border {
+            display: none;
+        }
+        
+        .file-preview {
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .preview-image {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .debug-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4 mb-4">Únete a Nuestro Catálogo de Modelos</h1>
+                    <p class="lead mb-4">Forma parte de nuestra agencia y descubre oportunidades únicas en el mundo del modelaje.</p>
+                    <a href="#inscripcion" class="btn btn-primary btn-lg">Inscríbete Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="inscripcion" class="form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title">Formulario de Inscripción</h2>
+                    <p class="text-center mb-5">Completa el siguiente formulario para que podamos conocerte mejor y evaluar tu perfil.</p>
+                    
+                    <div class="alert alert-success" id="success-alert">
+                        <strong>¡Éxito!</strong> Tu solicitud ha sido enviada correctamente. Nos pondremos en contacto contigo pronto.
+                    </div>
+                    
+                    <div class="alert alert-danger" id="error-alert">
+                        <strong>Error!</strong> <span id="error-message">Ha ocurrido un problema al enviar tu solicitud.</span>
+                    </div>
+                    
+                    <!-- Información de depuración -->
+                    <div class="debug-info" id="debug-info"></div>
+                    
+                    <form id="model-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label required-field">Nombre Completo</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label required-field">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resto del formulario igual que antes -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label required-field">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="edad" class="form-label required-field">Edad</label>
+                                    <input type="number" class="form-control" id="edad" name="edad" min="16" max="50" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="altura" class="form-label required-field">Altura (cm)</label>
+                                    <input type="number" class="form-control" id="altura" name="altura" min="150" max="200" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="peso" class="form-label required-field">Peso (kg)</label>
+                                    <input type="number" class="form-control" id="peso" name="peso" min="40" max="80" step="0.1" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="ciudad" class="form-label required-field">Ciudad de Residencia</label>
+                                    <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="experiencia" class="form-label">Experiencia en Modelaje</label>
+                                    <select class="form-select" id="experiencia" name="experiencia">
+                                        <option value="ninguna">Ninguna</option>
+                                        <option value="principiante">Principiante</option>
+                                        <option value="intermedia">Intermedia</option>
+                                        <option value="avanzada">Avanzada</option>
+                                        <option value="profesional">Profesional</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="redes" class="form-label">Redes Sociales (Instagram, TikTok, etc.)</label>
+                            <input type="text" class="form-control" id="redes" name="redes" placeholder="Ej: @tuusuario">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="comentarios" class="form-label">Comentarios Adicionales</label>
+                            <textarea class="form-control" id="comentarios" name="comentarios" rows="4" placeholder="Cuéntanos sobre ti, tus intereses, disponibilidad..."></textarea>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label required-field">Fotografías</label>
+                            <p class="small text-muted">Por favor, adjunta al menos 3 fotografías: una de rostro, una de cuerpo completo y una de medio cuerpo. Formatos aceptados: JPG, PNG (máx. 5MB cada una)</p>
+                            
+                            <div class="file-upload mb-2">
+                                <button class="file-upload-btn" type="button" id="btn-rostro">
+                                    <i class="fas fa-cloud-upload-alt me-2"></i>Seleccionar Fotografía de Rostro
+                                </button>
+                                <input type="file" id="foto_rostro" name="foto_rostro" accept=".jpg,.jpeg,.png" required>
+                            </div>
+                            
+                            <div class="file-upload mb-2">
+                                <button class="file-upload-btn" type="button" id="btn-cuerpo">
+                                    <i class="fas fa-cloud-upload-alt me-2"></i>Seleccionar Fotografía de Cuerpo Completo
+                                </button>
+                                <input type="file" id="foto_cuerpo" name="foto_cuerpo" accept=".jpg,.jpeg,.png" required>
+                            </div>
+                            
+                            <div class="file-upload mb-2">
+                                <button class="file-upload-btn" type="button" id="btn-medio">
+                                    <i class="fas fa-cloud-upload-alt me-2"></i>Seleccionar Fotografía de Medio Cuerpo
+                                </button>
+                                <input type="file" id="foto_medio" name="foto_medio" accept=".jpg,.jpeg,.png" required>
+                            </div>
+                            
+                            <div class="file-upload">
+                                <button class="file-upload-btn" type="button" id="btn-extra">
+                                    <i class="fas fa-cloud-upload-alt me-2"></i>Otras Fotografías (Opcional)
+                                </button>
+                                <input type="file" id="foto_extra" name="foto_extra" accept=".jpg,.jpeg,.png" multiple>
+                            </div>
+                            
+                            <div class="file-preview" id="file-preview">
+                                <h6 class="mt-3">Vista previa:</h6>
+                                <div id="preview-container"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
+                            <label class="form-check-label" for="terminos">Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#terminosModal">términos y condiciones</a> y la política de privacidad</label>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">
+                                <span id="submit-text">Enviar Solicitud</span>
+                                <div class="spinner-border spinner-border-sm text-light ms-2" role="status" id="submit-spinner">
+                                    <span class="visually-hidden">Enviando...</span>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        // REEMPLAZA ESTA URL CON LA DE TU GOOGLE APPS SCRIPT
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVeV3plSs073-_mbyVgtgaduaf3k_8ai3qbBLxIoweLi0wTFIXrKYks9pH_F9NfKc/exec';
+        
+        $(document).ready(function() {
+            let uploadedFiles = [];
+            
+            // Manejar la selección de archivos
+            $('input[type="file"]').change(function() {
+                const fileInput = this;
+                const buttonId = $(this).attr('id').replace('foto_', 'btn-');
+                
+                if (fileInput.files.length > 0) {
+                    const fileName = fileInput.files[0].name;
+                    $(`#${buttonId}`).html(`<i class="fas fa-check me-2"></i>${fileName}`);
+                    
+                    // Mostrar vista previa
+                    showPreview(fileInput);
+                } else {
+                    $(`#${buttonId}`).html('<i class="fas fa-cloud-upload-alt me-2"></i>Seleccionar Archivo');
+                }
+            });
+            
+            // Función para mostrar vista previa
+            function showPreview(fileInput) {
+                const file = fileInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const previewContainer = $('#preview-container');
+                        const previewId = `preview-${fileInput.id}`;
+                        
+                        // Remover preview anterior si existe
+                        $(`#${previewId}`).remove();
+                        
+                        const previewHtml = `
+                            <div id="${previewId}" class="d-inline-block position-relative">
+                                <img src="${e.target.result}" class="preview-image" alt="Vista previa">
+                                <span class="position-absolute top-0 start-100 translate-middle badge bg-secondary">
+                                    ${fileInput.id.replace('foto_', '')}
+                                </span>
+                            </div>
+                        `;
+                        
+                        previewContainer.append(previewHtml);
+                        $('#file-preview').show();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+            
+            // Función para convertir archivo a base64
+            function fileToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => {
+                        // Remover el prefijo data:image/jpeg;base64,
+                        const base64 = reader.result.split(',')[1];
+                        resolve({
+                            name: file.name,
+                            data: base64,
+                            mimeType: file.type
+                        });
+                    };
+                    reader.onerror = error => reject(error);
+                });
+            }
+            
+            // Manejar el envío del formulario
+            $('#model-form').submit(async function(e) {
+                e.preventDefault();
+                
+                // Ocultar alertas previas
+                $('#success-alert').hide();
+                $('#error-alert').hide();
+                $('#debug-info').hide();
+                
+                // Validación básica
+                let isValid = true;
+                $('input[required], select[required]').each(function() {
+                    if (!$(this).val()) {
+                        isValid = false;
+                        $(this).addClass('is-invalid');
+                    } else {
+                        $(this).removeClass('is-invalid');
+                    }
+                });
+                
+                if (!isValid) {
+                    showError('Por favor, completa todos los campos obligatorios.');
+                    return false;
+                }
+                
+                // Mostrar spinner de carga
+                $('#submit-text').text('Enviando...');
+                $('#submit-spinner').show();
+                $('#submit-btn').prop('disabled', true);
+                
+                try {
+                    // Preparar datos del formulario
+                    const formData = {
+                        nombre: $('#nombre').val(),
+                        email: $('#email').val(),
+                        telefono: $('#telefono').val(),
+                        edad: $('#edad').val(),
+                        altura: $('#altura').val(),
+                        peso: $('#peso').val(),
+                        ciudad: $('#ciudad').val(),
+                        experiencia: $('#experiencia').val(),
+                        redes: $('#redes').val(),
+                        comentarios: $('#comentarios').val()
+                    };
+                    
+                    // Convertir archivos a base64
+                    const files = [];
+                    const fileInputs = [
+                        document.getElementById('foto_rostro'),
+                        document.getElementById('foto_cuerpo'), 
+                        document.getElementById('foto_medio'),
+                        document.getElementById('foto_extra')
+                    ];
+                    
+                    for (const fileInput of fileInputs) {
+                        if (fileInput.files.length > 0) {
+                            for (let i = 0; i < fileInput.files.length; i++) {
+                                const fileData = await fileToBase64(fileInput.files[i]);
+                                files.push(fileData);
+                            }
+                        }
+                    }
+                    
+                    formData.fotos = files;
+                    
+                    // Mostrar datos de depuración
+                    showDebug('Enviando datos:', JSON.stringify(formData, null, 2));
+                    
+                    // Enviar datos al Google Apps Script
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const result = await response.json();
+                    showDebug('Respuesta del servidor:', JSON.stringify(result, null, 2));
+                    
+                    if (result.result === 'success') {
+                        $('#success-alert').fadeIn();
+                        $('#model-form')[0].reset();
+                        $('#file-preview').hide();
+                        $('#preview-container').empty();
+                        
+                        // Restablecer botones
+                        $('.file-upload-btn').html('<i class="fas fa-cloud-upload-alt me-2"></i>Seleccionar Archivo');
+                    } else {
+                        throw new Error(result.message || 'Error desconocido del servidor');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('Error al enviar el formulario: ' + error.message);
+                    showDebug('Error completo:', error.stack);
+                } finally {
+                    // Restablecer botón
+                    $('#submit-text').text('Enviar Solicitud');
+                    $('#submit-spinner').hide();
+                    $('#submit-btn').prop('disabled', false);
+                }
+            });
+            
+            function showError(message) {
+                $('#error-message').text(message);
+                $('#error-alert').fadeIn();
+            }
+            
+            function showDebug(title, content) {
+                $('#debug-info').html('<strong>' + title + '</strong>\n' + content);
+                $('#debug-info').show();
+            }
+        });
+    </script>
+</body>
+</html>
