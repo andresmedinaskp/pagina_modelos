@@ -191,6 +191,41 @@
     </style>
 </head>
 <body>
+    <!-- Modal Términos y Condiciones -->
+<div class="modal fade" id="terminosModal" tabindex="-1" aria-labelledby="terminosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="terminosLabel">Términos y Condiciones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <h6>1. Aceptación</h6>
+        <p>Al enviar este formulario, aceptas que la agencia revise y almacene la información enviada para fines de evaluación.</p>
+
+        <h6>2. Uso de fotografías</h6>
+        <p>Tus imágenes serán utilizadas únicamente para valoración interna. No se publicarán sin autorización previa.</p>
+
+        <h6>3. Datos personales</h6>
+        <p>Cumplimos con las normativas de protección de datos. Puedes solicitar la eliminación de tu información cuando lo desees.</p>
+
+        <h6>4. Compromisos de la agencia</h6>
+        <p>La inscripción no garantiza ingreso automático al catálogo. Cada perfil es evaluado de forma individual.</p>
+
+        <h6>5. Contacto</h6>
+        <p>Ante cualquier inquietud, puedes comunicarte con soporte de la agencia.</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -548,5 +583,49 @@
             }
         });
     </script>
+<footer class="mt-5" style="background-color: #1a1a1a; color: #fff; padding: 60px 0 30px;">
+    <div class="container">
+        <div class="row">
+
+            <!-- Logo / Nombre -->
+            <div class="col-md-4 mb-4">
+                <h4 style="color: #d4af37; font-family: 'Playfair Display', serif;">Agencia de Modelos</h4>
+                <p style="opacity: 0.8;">Descubre una plataforma diseñada para impulsar nuevos talentos. Conectamos modelos con oportunidades reales.</p>
+            </div>
+
+            <!-- Enlaces rápidos -->
+            <div class="col-md-4 mb-4">
+                <h5 style="color: #d4af37;">Enlaces</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#inscripcion" style="color: #fff; text-decoration: none;">Inscripción</a></li>
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#terminosModal" style="color: #fff; text-decoration: none;">Términos y condiciones</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div class="col-md-4 mb-4">
+                <h5 style="color: #d4af37;">Contacto</h5>
+                <p><i class="fas fa-envelope me-2"></i>modelss.agenciaa@gmail.com</p>
+                <div class="social-icons mt-3">
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-tiktok fa-lg"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-facebook fa-lg"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <hr style="border-color: rgba(255,255,255,0.1);">
+
+        <div class="text-center" style="opacity: 0.7;">
+            <p class="mb-0">© <span id="year"></span> Agencia de Modelos. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
